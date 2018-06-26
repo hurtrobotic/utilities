@@ -1,0 +1,41 @@
+Check containter running :
+------------------------
+docker ps
+
+Check containter present :
+------------------------   
+docker ps -a
+
+Start container
+---------------
+docker start <CONTAINER-ID>
+
+Run console on running container :
+--------------------------------
+docker exec -it ubuntu-ocr bash
+docker exec -it --user root ubuntu-ocr bash
+
+
+Display container logs interactive mode :
+---------------------------------------
+docker container logs -f <CONTAINER-ID>
+
+
+Remove containers not running :
+-----------------------------
+FOR /f "tokens=*" %i IN ('docker ps -a -q') DO docker rm %i
+
+Remove images : 
+--------------
+FOR /f "tokens=*" %i IN ('docker images -q -f "dangling=true"') DO docker rmi %i
+
+re-build image :
+-------------------
+docker build -t hurtrobotic/ubuntu-ocr .
+
+Nifi run container :
+------------------
+if container with name "ubuntu-ocr" is present, you have to remove it.
+
+docker run --name ubuntu-ocr -it -v //host_mnt/c/Users/James/data/ubuntu-ocr/data:/opt/workspace/data hurtrobotic/ubuntu-ocr
+

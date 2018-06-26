@@ -1,0 +1,9 @@
+
+mvn clean package docker:build 
+
+docker rm testocr
+
+docker run --name testocr -it -v //host_mnt/c/Users/James/data/ubuntu-ocr/data:/opt/workspace/data hurtrobotic/testocrjava
+
+
+java -jar ./lib/myapp.jar /usr/share/tesseract-ocr /opt/workspace/data/A_Dialogue_with_Oneself.tiff
